@@ -1,0 +1,1529 @@
+# FOODBRIDGE AI – ULTIMATE MASTER DEVELOPMENT PROMPT
+
+## 1. ACT AS
+
+Act as a senior full-stack software engineer, software architect, AI engineer, UI/UX designer, database architect, cybersecurity specialist, and QA engineer.
+
+Your responsibility is to design, develop, test, and deliver a complete, production-minded, AI-powered food donation and redistribution web application.
+
+Think like an experienced product development team building a real-world social-impact platform for a competitive student hackathon.
+
+Do not build just a frontend prototype. Build a fully functional application with a connected frontend, backend, database, authentication, business logic, and working APIs.
+
+---
+
+# 2. PROJECT OVERVIEW
+
+**Project Name:** FoodBridge AI
+
+**Problem ID:** HACK-P197
+
+**Category:** Food & Restaurant
+
+**Project Type:** Student Hackathon Prototype
+
+**Project Title:** Intelligent Food Donation and Redistribution Platform.
+
+### Problem
+
+Restaurants, hotels, bakeries, supermarkets, caterers, and community kitchens often have surplus edible food that may go to waste.
+
+At the same time, NGOs, orphanages, homeless shelters, and charitable organizations need access to food donations.
+
+There is a need for a centralized platform that connects donors with eligible recipients and coordinates food listings, requests, reservations, pickup schedules, and donation tracking.
+
+### Solution
+
+FoodBridge AI is an intelligent food redistribution platform that connects food donors with verified recipient organizations.
+
+It enables donors to publish surplus food listings, helps NGOs discover suitable nearby donations, manages reservations, coordinates pickups, and tracks completed donations.
+
+The platform uses AI-assisted matching, location-based discovery, automated recommendations, and impact analytics to improve food redistribution.
+
+### Primary Objectives
+
+- Reduce avoidable food waste.
+- Connect food donors with eligible charitable organizations.
+- Make available food and pickup information discoverable.
+- Prevent double booking and missed collections.
+- Simplify donation requests and pickup coordination.
+- Track donations from listing to completion.
+- Provide transparent operational and impact analytics.
+
+---
+
+# 3. TECHNOLOGY STACK
+
+Use the following consistent technology stack.
+
+### Frontend
+- React.js
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Lucide React icons
+- Recharts
+- React Hook Form
+- Zod validation
+
+### Backend
+- Node.js
+- Express.js
+- TypeScript
+- REST API architecture
+- JWT authentication
+- bcrypt password hashing
+- Zod request validation
+
+### Database
+- PostgreSQL
+- Prisma ORM
+- Database migrations
+- Relational database constraints
+- Database transactions
+
+### AI Integration
+- Google Gemini API.
+- Backend-only AI integration.
+- Deterministic fallback logic when AI is unavailable.
+
+### Maps
+- Leaflet.
+- OpenStreetMap.
+- Location-based search.
+- Distance calculation.
+
+### Additional Services
+- Cloudinary or an equivalent image storage service.
+- In-app notification system.
+- Environment variables for secrets.
+- Vercel for frontend deployment.
+- Render or another suitable backend hosting provider.
+- Managed PostgreSQL hosting.
+
+IMPORTANT:
+Use this stack consistently. Do not randomly switch between MongoDB and PostgreSQL or introduce unnecessary technologies.
+
+If a service requires an external API key, create the integration properly and document its configuration. The application must retain its core functionality when optional external services are unavailable.
+
+---
+
+# 4. USER ROLES AND AUTHENTICATION
+
+Implement three independent user roles.
+
+## A. FOOD DONORS
+
+Eligible donor types:
+- Restaurants.
+- Hotels.
+- Bakeries.
+- Supermarkets.
+- Catering businesses.
+- Community kitchens.
+- Food distribution businesses.
+
+Donor capabilities:
+- Register and log in.
+- Manage organization profile.
+- Create food donation listings.
+- Upload food images.
+- Edit active listings.
+- Remove eligible listings.
+- View incoming requests.
+- Accept or reject requests.
+- Manage pickup schedules.
+- Confirm pickup.
+- View completed donations.
+- View donation statistics.
+
+## B. RECIPIENT ORGANIZATIONS
+
+Eligible recipient types:
+- NGOs.
+- Orphanages.
+- Homeless shelters.
+- Charitable organizations.
+- Community kitchens.
+- Community food distribution groups.
+
+Recipient capabilities:
+- Register and log in.
+- Create organization profile.
+- Complete organization verification.
+- Browse available food.
+- Search and filter listings.
+- View food information.
+- Request available quantities.
+- Cancel eligible requests.
+- Track request status.
+- Confirm pickup.
+- View donation history.
+
+Only admin-verified recipient organizations can request donations.
+
+## C. ADMINISTRATOR
+
+Admin capabilities:
+- Secure admin login.
+- View platform statistics.
+- Manage donor accounts.
+- Review recipient registrations.
+- Verify or reject recipient organizations.
+- Manage food listings.
+- Review reported listings.
+- Suspend inappropriate accounts.
+- Monitor donation requests.
+- Review completed donations.
+- View audit logs.
+- Monitor platform impact.
+
+Implement role-based access control on the backend, not only in the frontend.
+
+---
+
+# 5. AUTHENTICATION SYSTEM
+
+Implement:
+
+- Donor registration.
+- Recipient registration.
+- Admin authentication.
+- Login and logout.
+- Secure password hashing using bcrypt.
+- JWT-based authentication.
+- Protected frontend routes.
+- Protected backend endpoints.
+- Role-based permissions.
+- Session persistence.
+- Token expiration and renewal strategy.
+- Password and input validation.
+- Meaningful authentication error messages.
+
+Security requirements:
+
+- Never store plaintext passwords.
+- Never expose private API keys.
+- Never trust frontend role information without backend verification.
+- Users must only modify resources they own.
+- Admin privileges must be restricted.
+
+Provide separate fictional demo credentials for donor, recipient, and admin accounts.
+
+---
+
+# 6. DONOR DASHBOARD
+
+Design a modern donor dashboard with the following information:
+
+### Dashboard Statistics
+
+- Total food listings.
+- Active listings.
+- Available food quantity.
+- Reserved food quantity.
+- Pending requests.
+- Accepted requests.
+- Completed donations.
+- Rejected or cancelled requests.
+- Estimated meals redistributed.
+
+### Donor Actions
+
+1. Create new food listing.
+2. View all listings.
+3. Edit listing details.
+4. Remove eligible listings.
+5. View incoming donation requests.
+6. Accept requests.
+7. Reject requests.
+8. Schedule pickup.
+9. Confirm food collection.
+10. View donation history.
+11. Manage profile.
+12. View notifications.
+
+### Donor Dashboard Layout
+
+Include:
+- Sidebar navigation.
+- Dashboard overview.
+- Statistics cards.
+- Recent donation activity.
+- Incoming request section.
+- Active food listings.
+- Donation analytics.
+- Notification panel.
+
+All statistics must be calculated from database records.
+
+---
+
+# 7. FOOD DONATION LISTING SYSTEM
+
+Create a comprehensive donation listing form.
+
+### Required Fields
+
+- Food name.
+- Food description.
+- Food image.
+- Food category.
+- Vegetarian or non-vegetarian.
+- Available quantity.
+- Measurement unit.
+- Preparation date and time.
+- Listing creation time.
+- Storage method.
+- Handling instructions.
+- Pickup location.
+- Pickup start time.
+- Pickup end time.
+- Collection deadline.
+- Use-by guidance where applicable.
+- Allergen information where known.
+- Donor organization.
+- Donor food handling declaration.
+
+### Food Categories
+
+- Cooked meals.
+- Bakery products.
+- Fruits.
+- Vegetables.
+- Dairy products.
+- Packaged food.
+- Raw ingredients.
+- Other.
+
+### Measurement Units
+
+- Meal boxes.
+- Plates.
+- Kilograms.
+- Litres.
+- Packets.
+- Pieces.
+
+### Listing Status
+
+Use the following listing statuses:
+
+- AVAILABLE
+- PARTIALLY_RESERVED
+- FULLY_RESERVED
+- EXPIRED
+- COMPLETED
+- REMOVED
+
+### Inventory Management
+
+Maintain separate quantities:
+
+- Total quantity.
+- Available quantity.
+- Reserved quantity.
+- Collected quantity.
+
+Ensure:
+
+Total quantity = Available quantity + Reserved quantity + Collected quantity.
+
+This relationship must remain valid throughout the donation lifecycle.
+
+---
+
+# 8. RECIPIENT / NGO DASHBOARD
+
+Build a separate dashboard for recipient organizations.
+
+### Dashboard Statistics
+
+- Available food listings.
+- Pending requests.
+- Accepted requests.
+- Upcoming pickups.
+- Completed donations.
+- Total food quantity received.
+- Estimated meals received.
+
+### Browse Donations
+
+Display food listings using modern cards.
+
+Each card should show:
+- Food image.
+- Food name.
+- Description.
+- Available quantity.
+- Dietary category.
+- Food category.
+- Donor organization.
+- Approximate location.
+- Pickup deadline.
+- Distance where available.
+- Listing status.
+
+### Search and Filters
+
+Implement:
+- Search by food name.
+- Filter by food category.
+- Filter vegetarian/non-vegetarian.
+- Filter by location.
+- Filter by quantity.
+- Filter by pickup deadline.
+- Sort by nearest.
+- Sort by newest.
+- Sort by available quantity.
+
+### Request Food
+
+Recipients should be able to:
+
+- Open donation details.
+- Enter requested quantity.
+- View available quantity.
+- Select an appropriate pickup window.
+- Submit a request.
+- View request confirmation.
+- Cancel eligible requests.
+- Track pickup status.
+- View donation history.
+
+Prevent requests exceeding available quantity.
+
+---
+
+# 9. DONATION REQUEST AND RESERVATION ENGINE
+
+Implement a complete, reliable request workflow.
+
+### Donation Lifecycle
+
+Donor creates food listing
+→ Recipient discovers listing
+→ Recipient submits request
+→ Request becomes pending
+→ Donor accepts or rejects
+→ Accepted quantity is reserved
+→ Pickup is scheduled
+→ Recipient collects food
+→ Both parties confirm collection
+→ Donation becomes completed
+→ History and analytics update.
+
+### Request Statuses
+
+- PENDING
+- ACCEPTED
+- REJECTED
+- CANCELLED
+- PICKUP_SCHEDULED
+- COLLECTED
+- COMPLETED
+
+### Business Rules
+
+1. Only verified NGOs can request food.
+2. Only available or partially reserved listings can receive requests.
+3. Pending requests must not reserve inventory.
+4. Accepted requests must reserve inventory.
+5. Rejected requests must not change inventory.
+6. Accepted requests can be cancelled according to defined cancellation rules before collection.
+7. Cancelled accepted requests must restore reserved quantities.
+8. Collected food must not be restored to available inventory.
+9. Completed requests cannot be modified.
+10. Expired listings cannot receive new requests.
+11. Donors can only accept or reject requests for their own listings.
+12. Recipients can only cancel their own eligible requests.
+13. Duplicate requests must be prevented or explicitly handled.
+
+### Concurrency Protection
+
+This is a critical requirement.
+
+Example:
+
+A restaurant has 20 meal boxes.
+
+NGO A requests 15.
+NGO B requests 15.
+
+The system must never allow both requests to be accepted if only 20 boxes exist.
+
+Use PostgreSQL database transactions and appropriate row locking or atomic conditional updates.
+
+Validate available quantity at the moment of acceptance.
+
+Update reservation records and listing inventory within the same transaction.
+
+Rollback all related changes if any operation fails.
+
+---
+
+# 10. PICKUP MANAGEMENT
+
+Implement a complete pickup coordination module.
+
+### Features
+
+- Pickup scheduling.
+- Pickup date and time.
+- Pickup window.
+- Pickup reference ID.
+- Donor confirmation.
+- Recipient confirmation.
+- Collection timestamp.
+- Pickup status.
+- Pickup history.
+
+### Confirmation Rules
+
+1. Only accepted requests can be scheduled.
+2. Only authorized donor and recipient accounts can confirm pickup.
+3. Each party must confirm collection independently.
+4. Once one party confirms, the request remains COLLECTED or awaiting confirmation.
+5. Once both parties confirm, the request becomes COMPLETED.
+6. Duplicate confirmations must be prevented.
+7. Every status update must be recorded with a timestamp.
+8. Completed donations cannot be reopened through normal user actions.
+
+Provide a confirmation screen showing the pickup reference and collection details.
+
+---
+
+# 11. ORGANIZATION VERIFICATION
+
+Implement recipient verification.
+
+### Verification Statuses
+
+- PENDING
+- VERIFIED
+- REJECTED
+
+### Verification Workflow
+
+Recipient registers
+→ Organization profile is submitted
+→ Admin reviews details
+→ Admin approves or rejects
+→ Verification status updates
+→ Verified organization can request donations.
+
+Display verification badges on approved recipient profiles.
+
+For demo purposes, use fictional organization information and sample verification records.
+
+Do not expose sensitive verification documents publicly.
+
+---
+
+# 12. AI-POWERED FEATURES
+
+AI must provide actual useful functionality.
+
+Do not add decorative AI buttons that do not perform meaningful operations.
+
+## A. INTELLIGENT FOOD MATCHING
+
+Build an intelligent recommendation engine that matches food donors with suitable NGOs.
+
+Consider:
+
+- Geographic distance.
+- Food category.
+- Dietary compatibility.
+- Requested quantity.
+- Organization capacity.
+- Pickup availability.
+
+### Weighted Matching Formula
+
+- Distance compatibility: 30%.
+- Quantity suitability: 25%.
+- Dietary compatibility: 20%.
+- Pickup availability: 25%.
+
+Total: 100%.
+
+Generate a transparent matching score.
+
+Example:
+
+"Helping Hands NGO – 92% match"
+
+Reasons:
+- Located near the donor.
+- Can accommodate the available quantity.
+- Matches dietary preferences.
+- Available during the pickup window.
+
+Use deterministic calculations for the matching score.
+
+Gemini can generate human-readable explanations and recommendations, but it must not independently approve donation requests.
+
+Handle missing data without producing misleading scores.
+
+## B. AI FOOD DESCRIPTION GENERATOR
+
+Allow donors to enter:
+
+- Food name.
+- Quantity.
+- Food category.
+- Preparation information.
+- Storage details.
+
+Generate a clear and structured food donation description.
+
+The donor must review and approve the generated description before publishing.
+
+## C. AI DONATION INSIGHTS
+
+Generate insights about:
+
+- Frequently donated food categories.
+- Areas with high donation activity.
+- Unclaimed listings.
+- Frequently requested food.
+- Donation trends.
+- Recipient demand patterns.
+
+Use actual database data as input.
+
+## D. AI RECOMMENDATIONS
+
+Recommend:
+
+- Suitable recipient organizations.
+- Nearby available donations.
+- Potentially unclaimed listings.
+- Pickup opportunities.
+
+## E. AI FALLBACK
+
+If Gemini API is unavailable:
+
+- Core donation functionality must continue.
+- Use deterministic matching.
+- Display meaningful fallback recommendations.
+- Show appropriate AI service availability messages.
+
+Never expose API keys in frontend code.
+
+IMPORTANT FOOD SAFETY RULE:
+
+AI must never certify food as safe, guarantee edibility, or replace human food-handling responsibility.
+
+---
+
+# 13. LOCATION AND MAP FEATURES
+
+Integrate Leaflet and OpenStreetMap.
+
+### Features
+
+- Display donor locations.
+- Display recipient organization locations.
+- Show available food donation locations.
+- Calculate approximate distance.
+- Support nearby listing discovery.
+- Provide location-based filtering.
+- Display pickup locations after acceptance.
+
+Use fictional demo addresses and coordinates.
+
+Do not expose real private addresses or personal contact details.
+
+Before a request is accepted, show only the location information needed for discovery. Reveal precise demo pickup details to the authorized recipient after acceptance.
+
+Handle missing or invalid coordinates gracefully.
+
+---
+
+# 14. ADMIN DASHBOARD
+
+Create a professional admin panel.
+
+### Dashboard Statistics
+
+- Total users.
+- Total donors.
+- Total recipient organizations.
+- Verified organizations.
+- Pending verification requests.
+- Total food listings.
+- Active listings.
+- Total donation requests.
+- Completed donations.
+- Reported listings.
+
+### Admin Modules
+
+A. User Management
+- View users.
+- View organization profiles.
+- Suspend or reactivate accounts.
+
+B. Organization Verification
+- Review recipient profiles.
+- Approve verification.
+- Reject verification.
+- Record admin decisions.
+
+C. Listing Management
+- View all food listings.
+- Review reported listings.
+- Remove inappropriate listings.
+- View listing history.
+
+D. Report Management
+- View submitted reports.
+- Review report details.
+- Resolve or dismiss reports.
+- Record resolution details.
+
+E. Donation Monitoring
+- View donation requests.
+- Monitor pickup progress.
+- Review completed donations.
+
+F. Audit Logs
+- Track administrative actions.
+- Record who performed an action.
+- Record timestamps.
+- Record relevant changes.
+
+Do not allow unauthorized modification of completed donation records.
+
+---
+
+# 15. NOTIFICATION SYSTEM
+
+Implement a functional in-app notification system.
+
+Generate notifications for:
+
+- New donation requests.
+- Request acceptance.
+- Request rejection.
+- Request cancellation.
+- Upcoming pickup deadlines.
+- Pickup scheduling.
+- Pickup confirmation.
+- Donation completion.
+- Organization verification.
+- Listing expiration.
+
+Requirements:
+
+- Store notifications in the database.
+- Show unread notification counts.
+- Allow users to mark notifications as read.
+- Maintain notification history.
+- Display notifications to the correct users only.
+
+Use actual system events, not hardcoded fake notifications.
+
+Email or SMS notifications can be optional extensions.
+
+---
+
+# 16. IMPACT ANALYTICS
+
+Build an interactive platform-wide impact dashboard.
+
+### Metrics
+
+- Total completed donations.
+- Total food quantity redistributed.
+- Estimated meals redistributed.
+- Active donors.
+- Verified recipient organizations.
+- Donation completion rate.
+- Most donated food categories.
+- Donation trends.
+- Area-wise donation activity.
+
+### Calculation Rules
+
+- Count only completed donations in impact totals.
+- Do not count pending, rejected, cancelled, or expired donations.
+- Calculate meals using a configurable average serving-size assumption.
+- Explain the serving-size assumption.
+- Clearly label meals and environmental benefits as estimates.
+- Avoid unsupported claims about carbon emissions or environmental impact.
+
+Use Recharts for visual analytics.
+
+---
+
+# 17. DATABASE ARCHITECTURE
+
+Use PostgreSQL with Prisma ORM.
+
+Create the following database entities.
+
+### 1. Users
+- id
+- name
+- email
+- passwordHash
+- role
+- accountStatus
+- createdAt
+- updatedAt
+
+### 2. Organizations
+- id
+- userId
+- organizationName
+- organizationType
+- description
+- address
+- latitude
+- longitude
+- contactDetails
+- verificationStatus
+- createdAt
+- updatedAt
+
+### 3. FoodListings
+- id
+- donorOrganizationId
+- foodName
+- description
+- imageUrl
+- category
+- dietaryType
+- totalQuantity
+- availableQuantity
+- reservedQuantity
+- collectedQuantity
+- unit
+- preparationTime
+- storageMethod
+- handlingInstructions
+- allergenInformation
+- pickupLocation
+- pickupStart
+- pickupEnd
+- collectionDeadline
+- listingStatus
+- createdAt
+- updatedAt
+
+### 4. DonationRequests
+- id
+- listingId
+- recipientOrganizationId
+- requestedQuantity
+- requestStatus
+- pickupWindow
+- donorConfirmed
+- recipientConfirmed
+- createdAt
+- updatedAt
+
+### 5. PickupDetails
+- id
+- requestId
+- pickupReference
+- scheduledAt
+- pickupStatus
+- donorConfirmedAt
+- recipientConfirmedAt
+- completedAt
+
+### 6. DonationStatusHistory
+- id
+- requestId
+- previousStatus
+- newStatus
+- changedBy
+- timestamp
+- remarks
+
+### 7. Notifications
+- id
+- userId
+- title
+- message
+- notificationType
+- isRead
+- createdAt
+
+### 8. Reports
+- id
+- reportedBy
+- listingId
+- reason
+- description
+- reportStatus
+- reviewedBy
+- createdAt
+- resolvedAt
+
+### 9. AdminAuditLogs
+- id
+- adminId
+- action
+- targetType
+- targetId
+- details
+- timestamp
+
+Define proper:
+
+- Primary keys.
+- Foreign keys.
+- Unique constraints.
+- Database indexes.
+- Relationships.
+- Validation constraints.
+- Cascading rules.
+- Timestamps.
+
+Use appropriate decimal or integer types for quantities and coordinates.
+
+Do not store redundant or inconsistent inventory values without validation.
+
+---
+
+# 18. BACKEND API ARCHITECTURE
+
+Implement REST APIs using Express.js.
+
+Organize the backend into:
+
+- Routes.
+- Controllers.
+- Services.
+- Middleware.
+- Database access.
+- Validators.
+- Configuration.
+- Utilities.
+
+### Authentication APIs
+
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/logout
+GET /api/auth/me
+
+### Organization APIs
+
+GET /api/organizations
+GET /api/organizations/:id
+PUT /api/organizations/profile
+GET /api/organizations/verification
+PATCH /api/admin/organizations/:id/verify
+PATCH /api/admin/organizations/:id/reject
+
+### Food Listing APIs
+
+POST /api/listings
+GET /api/listings
+GET /api/listings/:id
+PUT /api/listings/:id
+DELETE /api/listings/:id
+
+### Donation Request APIs
+
+POST /api/requests
+GET /api/requests
+GET /api/requests/:id
+PATCH /api/requests/:id/accept
+PATCH /api/requests/:id/reject
+PATCH /api/requests/:id/cancel
+
+### Pickup APIs
+
+POST /api/pickups
+GET /api/pickups/:id
+PATCH /api/pickups/:id/confirm
+
+### AI APIs
+
+POST /api/ai/match
+POST /api/ai/generate-description
+GET /api/ai/insights
+
+### Notification APIs
+
+GET /api/notifications
+PATCH /api/notifications/:id/read
+
+### Admin APIs
+
+GET /api/admin/dashboard
+GET /api/admin/users
+GET /api/admin/listings
+GET /api/admin/reports
+PATCH /api/admin/reports/:id/resolve
+GET /api/admin/audit-logs
+
+### Analytics APIs
+
+GET /api/analytics/platform
+GET /api/analytics/donor
+GET /api/analytics/recipient
+
+Add:
+
+- Pagination.
+- Filtering.
+- Sorting.
+- Request validation.
+- Authorization.
+- Consistent error responses.
+- Appropriate HTTP status codes.
+
+Use a versioned API prefix if needed, such as /api/v1.
+
+All APIs must be connected to actual database operations.
+
+---
+
+# 19. UI/UX DESIGN SYSTEM
+
+Create a premium, modern, polished, professional web application.
+
+The design should communicate:
+
+- Trust.
+- Sustainability.
+- Community.
+- Food security.
+- Transparency.
+- Social impact.
+
+### Visual Direction
+
+Use a modern nature-inspired visual identity.
+
+Primary colors:
+- Deep forest green.
+- Fresh green.
+- Warm white.
+- Soft cream.
+- Light neutral backgrounds.
+
+Use:
+- Modern typography.
+- Clean layouts.
+- Consistent spacing.
+- Rounded cards.
+- Subtle shadows.
+- Refined borders.
+- Professional icons.
+- Smooth but restrained animations.
+- Clear visual hierarchy.
+- Accessible contrast.
+- Responsive components.
+
+Avoid:
+- Excessive gradients.
+- Overcrowded layouts.
+- Unnecessary animations.
+- Too many decorative elements.
+- Inconsistent button styles.
+- Generic template-like dashboards.
+
+### Landing Page
+
+Create an impressive landing page containing:
+
+1. Modern navigation bar.
+2. Hero section.
+3. Clear project headline.
+4. Supporting description.
+5. Primary call to action: Donate Food.
+6. Secondary call to action: Find Food.
+7. Food donation impact statistics.
+8. How It Works section.
+9. Donor and recipient benefits.
+10. AI-powered matching introduction.
+11. Impact showcase.
+12. Testimonials using clearly identified fictional demo content.
+13. Footer.
+
+Suggested headline:
+
+"Good Food Deserves a Second Chance."
+
+Suggested supporting text:
+
+"Connecting surplus food with communities in need through intelligent matching, responsible redistribution, and transparent donation tracking."
+
+### Required Application Pages
+
+PUBLIC:
+1. Landing page.
+2. About page.
+3. How It Works page.
+4. Login page.
+5. Registration page.
+6. Available Food preview.
+
+DONOR:
+7. Donor dashboard.
+8. Create donation.
+9. My food listings.
+10. Incoming requests.
+11. Pickup management.
+12. Donation history.
+13. Donor profile.
+
+RECIPIENT:
+14. NGO dashboard.
+15. Browse donations.
+16. Food details.
+17. My requests.
+18. Pickup tracking.
+19. Completed donations.
+20. NGO profile.
+
+ADMIN:
+21. Admin dashboard.
+22. User management.
+23. Organization verification.
+24. Listing management.
+25. Report management.
+26. Donation monitoring.
+27. Impact analytics.
+28. Audit logs.
+
+Ensure each role has its own navigation and permissions.
+
+---
+
+# 20. IMAGE UPLOAD AND FILE MANAGEMENT
+
+Implement real image upload functionality.
+
+Requirements:
+
+- Support JPG, JPEG, PNG, and WebP.
+- Validate image size.
+- Validate file type.
+- Generate safe unique filenames.
+- Store images using an appropriate storage service.
+- Save image URLs in the database.
+- Handle upload failures.
+- Allow image replacement when permitted.
+- Prevent unauthorized uploads.
+
+Never store large image binaries directly in ordinary database fields unless there is a specific architectural reason.
+
+If Cloudinary is unavailable, provide a documented local-development storage fallback.
+
+---
+
+# 21. SAMPLE DATA AND DEMO ENVIRONMENT
+
+Seed the database with realistic fictional information.
+
+Minimum sample data:
+
+- 5 food donor organizations.
+- 3 recipient organizations.
+- 10 food donation listings.
+- Multiple pending requests.
+- Multiple accepted requests.
+- Completed donations.
+- Rejected requests.
+- Cancelled requests.
+- Notifications.
+- Sample reports.
+
+Include different food categories and dietary types.
+
+Use realistic quantities and pickup windows.
+
+Include fictional Hyderabad-area demo locations, such as different localities, with fictional addresses and coordinates.
+
+### Demo Accounts
+
+Create:
+
+1. Donor demo account.
+2. Verified NGO demo account.
+3. Pending NGO demo account.
+4. Admin demo account.
+
+Document the credentials in the README.
+
+Use safe development-only passwords and never use production credentials in seed data.
+
+Seed scripts must be repeatable without creating duplicate records.
+
+---
+
+# 22. SECURITY REQUIREMENTS
+
+Implement appropriate application security.
+
+- Password hashing.
+- Authentication middleware.
+- Role-based authorization.
+- Input validation.
+- SQL injection prevention through Prisma.
+- Secure environment variables.
+- Rate limiting.
+- CORS configuration.
+- Secure error handling.
+- File upload validation.
+- Ownership validation.
+- Audit logging.
+- Protection against mass assignment.
+- Appropriate token handling.
+- No sensitive information in public responses.
+
+Never expose:
+- Password hashes.
+- Private API keys.
+- Internal verification documents.
+- Private contact details.
+- Sensitive administrative information.
+
+Use fictional addresses and contact information for demonstrations.
+
+---
+
+# 23. FOOD SAFETY AND RESPONSIBLE HANDLING
+
+FoodBridge AI is a coordination platform, not a food-safety certification system.
+
+Implement the following safeguards:
+
+1. Donors must provide accurate food information.
+2. Collect preparation or listing time.
+3. Collect relevant storage information.
+4. Collect handling instructions.
+5. Display collection deadlines clearly.
+6. Include allergen information where known.
+7. Require a donor declaration.
+8. Automatically expire listings after their deadline.
+9. Allow users to report questionable listings.
+10. Prevent requests for expired listings.
+
+Clearly communicate that donors remain responsible for appropriate food handling and compliance with applicable local food-safety requirements.
+
+Do not use AI to declare food safe or unsafe.
+
+---
+
+# 24. TESTING AND QUALITY ASSURANCE
+
+Build and execute meaningful tests.
+
+### Authentication Tests
+- Donor registration.
+- NGO registration.
+- Login.
+- Invalid password.
+- Invalid token.
+- Unauthorized API access.
+- Role restrictions.
+
+### Listing Tests
+- Create listing.
+- Edit listing.
+- Remove listing.
+- Invalid quantity.
+- Missing required fields.
+- Expired listing.
+- Listing ownership.
+
+### Request Tests
+- Submit request.
+- Accept request.
+- Reject request.
+- Cancel request.
+- Duplicate request.
+- Insufficient quantity.
+- Unverified NGO.
+- Concurrent reservation attempts.
+
+### Pickup Tests
+- Schedule pickup.
+- Donor confirmation.
+- Recipient confirmation.
+- Duplicate confirmation.
+- Completed status.
+- Invalid status transitions.
+
+### Analytics Tests
+- Completed donation calculations.
+- Pending request exclusion.
+- Rejected request exclusion.
+- Correct quantity calculations.
+- Estimated meals calculation.
+
+### End-to-End Scenario
+
+Execute the complete workflow:
+
+1. Register donor.
+2. Register NGO.
+3. Admin verifies NGO.
+4. Donor logs in.
+5. Donor creates a food listing.
+6. NGO logs in.
+7. NGO discovers the food listing.
+8. NGO submits a request.
+9. Donor accepts the request.
+10. System reserves the correct quantity.
+11. Donor schedules pickup.
+12. Donor confirms collection.
+13. NGO confirms collection.
+14. System marks donation completed.
+15. Donation history updates.
+16. Impact dashboard updates.
+
+Also test rejection, cancellation, expired listings, and insufficient inventory.
+
+Fix all critical errors before final delivery.
+
+Do not claim tests passed unless they were actually executed.
+
+---
+
+# 25. DEVELOPMENT EXECUTION PLAN
+
+Build the application in the following sequence.
+
+### PHASE 1 – PROJECT FOUNDATION
+- Initialize frontend.
+- Initialize backend.
+- Configure TypeScript.
+- Configure database.
+- Configure environment variables.
+- Establish folder architecture.
+- Create database schema.
+- Implement migrations.
+
+### PHASE 2 – AUTHENTICATION
+- Registration.
+- Login.
+- Logout.
+- Authentication middleware.
+- Role-based authorization.
+- Protected routes.
+
+### PHASE 3 – DONOR MODULE
+- Donor profile.
+- Donor dashboard.
+- Food listing creation.
+- Listing management.
+- Incoming requests.
+
+### PHASE 4 – RECIPIENT MODULE
+- NGO profile.
+- Organization verification.
+- Food discovery.
+- Search and filters.
+- Donation requests.
+- Recipient dashboard.
+
+### PHASE 5 – CORE DONATION ENGINE
+- Request processing.
+- Quantity reservation.
+- Database transactions.
+- Status transitions.
+- Pickup scheduling.
+- Dual confirmation.
+- Donation history.
+
+### PHASE 6 – ADMIN MODULE
+- Admin dashboard.
+- User management.
+- NGO verification.
+- Listing moderation.
+- Reports.
+- Audit logs.
+
+### PHASE 7 – AI AND MAPS
+- Matching engine.
+- AI descriptions.
+- Donation insights.
+- Location-based discovery.
+- Map integration.
+
+### PHASE 8 – NOTIFICATIONS AND ANALYTICS
+- In-app notifications.
+- Impact calculations.
+- Charts.
+- Dashboard integration.
+
+### PHASE 9 – TESTING
+- Backend tests.
+- Frontend integration tests.
+- API tests.
+- End-to-end workflow.
+- Security validation.
+- Bug fixing.
+
+### PHASE 10 – FINAL DELIVERY
+- Seed sample data.
+- Document demo accounts.
+- Write README.
+- Document environment variables.
+- Provide installation instructions.
+- Provide startup commands.
+- Explain deployment requirements.
+
+---
+
+# 26. PROJECT STRUCTURE
+
+Use a modular, maintainable structure similar to:
+
+foodbridge-ai/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── context/
+│   │   ├── routes/
+│   │   ├── types/
+│   │   └── utils/
+│   └── package.json
+│
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── middleware/
+│   │   ├── validators/
+│   │   ├── utils/
+│   │   └── app.ts
+│   ├── prisma/
+│   │   ├── schema.prisma
+│   │   ├── migrations/
+│   │   └── seed.ts
+│   └── package.json
+│
+├── docs/
+│   ├── architecture.md
+│   ├── api-documentation.md
+│   └── testing-report.md
+│
+├── .env.example
+├── .gitignore
+└── README.md
+
+This is a suggested structure. Adjust it when necessary while preserving modularity and separation of concerns.
+
+---
+
+# 27. FINAL ACCEPTANCE CRITERIA
+
+The project is complete only when the following conditions are satisfied.
+
+### Frontend
+- All major pages exist.
+- All forms work.
+- All important buttons work.
+- Navigation works.
+- Role-based dashboards work.
+- Responsive layouts work.
+- Loading and error states exist.
+
+### Backend
+- Backend server starts successfully.
+- APIs work.
+- Authentication works.
+- Authorization works.
+- Database operations work.
+- Business rules are enforced.
+- Error handling is implemented.
+
+### Database
+- PostgreSQL is connected.
+- Prisma migrations work.
+- Seed scripts work.
+- Relationships are valid.
+- Data persists after refresh and restart.
+- Inventory updates remain consistent.
+
+### Core Functionality
+- Donors can publish surplus food.
+- Verified NGOs can discover and request food.
+- Donors can accept and reject requests.
+- Inventory reservations work correctly.
+- Pickup can be scheduled.
+- Both parties can confirm collection.
+- Completed donations are recorded.
+
+### Additional Functionality
+- AI matching works or provides deterministic fallback.
+- Location discovery works where coordinates are available.
+- Admin can verify organizations.
+- Notifications work.
+- Impact analytics use actual completed donations.
+
+### Testing
+- Critical backend tests pass.
+- End-to-end donation workflow passes.
+- No known critical errors remain.
+- Remaining limitations are documented honestly.
+
+---
+
+# 28. FINAL INSTRUCTIONS TO THE AI BUILDER
+
+Start building FoodBridge AI as a completely new project.
+
+Do not merely generate a design, mockup, or static dashboard.
+
+Do not create buttons that have no functionality.
+
+Do not use fake success messages in place of actual database operations.
+
+Do not use frontend-only state as a substitute for backend persistence.
+
+Do not hardcode dashboard statistics when database calculations are available.
+
+Do not leave critical APIs unimplemented.
+
+Do not silently ignore errors.
+
+Do not claim external integrations are working without verifying them.
+
+Do not expose private credentials.
+
+Do not sacrifice backend reliability for decorative UI.
+
+Prioritize a complete and reliable donor-to-recipient donation workflow before optional advanced features.
+
+If the entire application cannot be completed in one execution, work phase by phase, preserve all completed work, and clearly identify the remaining tasks.
+
+At every stage:
+1. Implement the feature.
+2. Connect it to the backend.
+3. Connect it to the database.
+4. Test its actual functionality.
+5. Fix errors.
+6. Continue to the next phase.
+
+# FINAL EXPECTED RESULT
+
+Deliver FoodBridge AI as a complete, modern, responsive, AI-powered food donation and redistribution platform.
+
+A judge must be able to log in as a donor, publish surplus food, log in as a verified NGO, discover and request the food, receive donor approval, coordinate pickup, confirm collection from both sides, and see the completed donation reflected in the platform's history and impact analytics.
+
+The final application must demonstrate real functionality, reliable backend operations, consistent database records, secure access control, meaningful AI assistance, and measurable social impact.
+
+Build a working product, not just a presentation of an idea.
